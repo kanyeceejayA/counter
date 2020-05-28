@@ -2,7 +2,6 @@
 .masthead {
     height: 100vh;
     min-height: 500px;
-    /* background-image: url(''); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +14,6 @@
     color:white
 }
 h1{
-    /* color:#221f1f; */
     font-size: 8rem;
 }
 #countBar{
