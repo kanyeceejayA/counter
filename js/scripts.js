@@ -59,8 +59,8 @@ count.registerListener(function(val) {
     // console.log("Someone changed the value of count to " + val);
 
     if(count.a<min){
-        count.a = getCookie("count");
-        alert("sorry, The NUmber of people can't go below "+min);
+        count.a = parseInt(getCookie("count"));
+        myalert("warning","sorry, The Number of people can't go below "+min);
     }else if(count.a>max){
         count.a = getCookie("count");
         myalert("danger","sorry, The Number of people can't exceed "+max);
