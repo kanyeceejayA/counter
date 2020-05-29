@@ -1,13 +1,15 @@
 
 let min=0;
-let max = 30;
-let warn = 20;
+let max = 40;
+let warn = 25;
 let enter = document.getElementById('enter');
 let leave = document.getElementById('leave');
 let countView = document.getElementById('countView');
 let countBar = document.getElementById('countBar');
 var count ={};
 var warned ={};
+
+
 
 window.onload = function(){
     count.a = getCookie("count");
@@ -72,18 +74,23 @@ count.registerListener(function(val) {
         width= (count.a/max)*100;
         $(".progress-bar").css("width", width+"%");
 
-        if(count.a>warn){
-            $('.progress-bar').removeClass('bg-success');
+        if(count.a>warn && count.a<max){
+            $('.progress-bar').removeClass('bg-success bg-danger');
             $('.progress-bar').addClass('bg-warning');
             
             if(warned!=true){
-                myalert('warning','The Number of people is getting close to the limit');
+                myalert('warning',"We're getting close to maximum occupancy.");
                 warned = true;
             }
         }else if(count.a<=warn){
             $('.progress-bar').removeClass('bg-warning');
             $('.progress-bar').addClass('bg-success');
             warned = false;
+        }else if(count.a == max){
+            $('.progress-bar').removeClass('bg-warning');
+            $('.progress-bar').addClass('bg-danger');
+            myalert('danger',"We've reached maximum occupancy.");
+            
         }
 
     }
