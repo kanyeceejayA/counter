@@ -3,42 +3,98 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
 
         <title>People Counter</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-        <link rel="manifest" href="favicon/site.webmanifest">
+        <link rel="manifest" href="favicon/site.webmanifest?ver=1234">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/styles.css?ver=1243d444422" rel="stylesheet">
     </head>
     <body>
         
             
-        <nav class="navbar navbar-expand-md navbar-light bg-light shadow fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="img/sportchek_logo_32a.png" class="img-fluid logo"> SportChek Counter</a>
+                <a class="navbar-brand" href="#" ><img src="img/sportchek_logo_32a.png" class="img-fluid logo"> SportChek Counter</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="togglebg()"><i class="material-icons">arrow_forward</i> background </a>
+                        <a class="nav-link" href="#" onclick="togglebg()">bg</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="reseta()"> <i class="material-icons">arrow_forward</i> Reset Counter</a>
+                      <a class="nav-link" href="#" onclick="togglecolor()">color</a>
+                  </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu navbar-dark bg-dark dark">
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#formModal" >Edit Threshold</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="reseta()"> Reset Counter</a>
                     </li>
                 </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Modal -->
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Edit Occupancy Thresholds</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <style>
+                        
+                    </style>
+                    <form>
+                        <div class="form-group row">
+                          <label for="maxVal" class="col-xs-3 col-sm-2 col-form-label">Max: </label>
+                          <div class="col-sm-3">
+                            <input type="number" class="form-control" id="maxVal" placeholder="" min="0" max="10">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="warnVal" class="col-xs-3 col-sm-2 col-form-label">Warning: </label>
+                          <div class="col-sm-3">
+                            <input type="number" class="form-control" id="warnVal" placeholder="" min="0" max="10">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <small>Warning: Changing these values shall reset the current Occupancy value too. proceed with caution</small>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="setValues()">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
              
         <!-- Full Page Image Header with Vertically Centered Content -->
-        <section class="masthead bg">
+        <section class="masthead darker">
             <div class="transparent h-100">
                 <div class="container h-100">
                     <div id='alertbox'></div>
@@ -65,5 +121,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" src="js/loading-bar.js"></script> -->
-    <script type="text/javascript" src="js/scripts.js?ver="+date.now()></script>
+    <script type="text/javascript">
+      var d = Date.now();
+      $('#roses').attr('src',`js/scripts.js?ver=${d}`)
+    </script>
+    <script type="text/javascript"  id="roses" src="js/scripts.js?ver=ddcsdcsdc"></script>
 </html>

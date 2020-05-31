@@ -1,24 +1,81 @@
 
 let min=0;
-let max = 40;
-let warn = 25;
-let enter = document.getElementById('enter');
-let leave = document.getElementById('leave');
+var max = {};
+var warn = {};
 let countView = document.getElementById('countView');
-let countBar = document.getElementById('countBar');
 var count ={};
 var warned ={};
 
 
-
 window.onload = function(){
     count.a = getCookie("count");
+    max = getCookie('max');
+    warn = getCookie('warn');
 
-
+    
+    
     if (count.a == null) {
         count.a = 0;
     }
+    if (max == null) {
+        max = 40;  
+    }
+    if (warn == null) {
+        warn = 25;  
+    }
+    
+    //Place values in html
+    $('.progress-bar').attr('aria-valuemax',max);
+    $('#warnVal').val(warn);
+    $('#maxVal').val(max);
+    
+    //Align Modal well
+    $('.modal-dialog').css("margin-top", Math.max(0, ($(window).height() - 380) / 2));
+
     count.a = parseInt(count.a);
+
+    // function alignModal(){
+    //     var modalDialog = $(this).find(".modal-dialog");
+    //     /* Applying the top margin on modal dialog to align it vertically center */
+    //     modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+    // }
+    // // Align modal when it is displayed
+    // $(".modal").on("shown.bs.modal", alignModal);
+    
+    // // Align modal when user resize the window
+    // $(window).on("resize", function(){
+    //     $(".modal:visible").each(alignModal);
+    // });
+}
+
+//Change Variables
+function setValues() {
+    warnVal = parseInt($('#warnVal').val());
+    maxVal = parseInt($('#maxVal').val());
+    
+    if(warnVal >= maxVal){
+        
+        myalert("danger",`Your Chosen Warn Value is too high`);
+    }
+    else{
+        $('#formModal').modal('hide');
+        
+        count.a=0;
+        warn = parseInt(warnVal);
+        max = parseInt(maxVal);
+
+
+        document.cookie = `max=${max};`;
+        document.cookie = `warn=${warn};`;
+
+        $('.progress-bar').attr('aria-valuemax',max);
+        
+        $('.progress-bar').removeClass('bg-warning bg-danger');
+
+        myalert("success",`Max set to ${max} and warning set to ${warn}`);
+    }
+
+
 }
 
 // Maths Functions
@@ -68,9 +125,13 @@ count.registerListener(function(val) {
         myalert("danger","sorry, The Number of people can't exceed "+max);
         return;
     }else{
-        document.cookie = "count="+count.a;
+        var d = new Date();
+        d.setTime(d.getTime() + (10*24*60*60*1000));
+
+        document.cookie = `count=${count.a};expires:${d}`;
         countView.innerText = count.a;
-        countBar.setAttribute('aria-valuenow',count.a);
+        $('.progress-bar').attr('aria-valuenow',count.a);
+
         width= (count.a/max)*100;
         $(".progress-bar").css("width", width+"%");
 
@@ -98,23 +159,30 @@ count.registerListener(function(val) {
 
 function myalert(type,message){
     document.getElementById('alertbox').innerHTML = `<div class='alert alert-${type} alert-dismissible slideup show ml-auto mr-auto' role='alert'><strong>${type}:</strong> ${message}.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>`;
-    setTimeout(() => {   $('.alert').alert("close"); }, 1500);
+    setTimeout(() => {   $('.alert').alert("close"); }, 2000);
 }
 
 function togglebg(){
     $('.masthead').toggleClass('bg');
 }
+
+function togglecolor(){
+    $('.masthead').toggleClass('darker');
+    $('nav').toggleClass('bg-dark');
+    $('nav').toggleClass('bg-light');
+    $('nav').toggleClass('navbar-dark');
+    $('nav').toggleClass('navbar-light');
+}
+
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
+    let begin = dc.indexOf(prefix);
     if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
+        return null;
     }
     else
     {
-        begin += 2;
         var end = document.cookie.indexOf(";", begin);
         if (end == -1) {
         end = dc.length;

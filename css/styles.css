@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: capitalize;
+    /* letter-spacing: .045em; */
+    /* font-size: 18px; */
 
+}
 .masthead {
     height: 100vh;
     min-height: 500px;
@@ -6,12 +13,25 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+.transparent{
+    background-color: rgba(255,255,255,.5);
+}
 .bg{
     background-image: url(../img/agency.jpg);
 }
-.bg > .transparent{
+.darker > .transparent{
     background-color:rgba(0,0,0,0.5);
     color:white
+}
+.darker{
+    background-color: #2d2d2d;
+    color:white;
+}
+.dropdown-item{
+    color: rgba(255,255,255,.5);
+}
+.dropdown-item .active{
+    color:white;
 }
 h1{
     font-size: 8rem;
@@ -65,4 +85,7 @@ s
     color: #fff;
     background-color: #47a44b;
     border-color: #39843c;
+}
+.form-control{
+    width:unset;
 }
