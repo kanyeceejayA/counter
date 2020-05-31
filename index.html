@@ -27,7 +27,7 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/styles.css?ver=1243d44qverer22" rel="stylesheet">
+        <link href="css/styles.css?ver=5" rel="stylesheet">
     </head>
     <body>
         
@@ -41,11 +41,15 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="togglebg()">bg</a>
+                        <a class="nav-link" href="#" onclick="togglebg()">Toggle bg</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#" onclick="togglecolor()">color</a>
                   </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#formModal" onclick="hideMenu()">Edit Threshold</a>
+                </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                         <div class="dropdown-menu navbar-dark bg-dark dark">
@@ -60,6 +64,9 @@
                 </div>
             </div>
         </nav>
+
+        
+        <div id='alertbox'></div>
 
         <!-- Modal -->
         <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
@@ -104,7 +111,7 @@
         <section class="masthead bg darker">
             <div class="transparent h-100">
                 <div class="container h-100">
-                    <div id='alertbox'></div>
+                    
                     <div class="row h-100 align-items-center">
                         <div class="col-12 text-center">
                             <h1 class="font-weight-light" id='countView'><i class="material-icons spin">autorenew</i></h1>
@@ -132,5 +139,5 @@
       var d = Date.now();
       $('#roses').attr('src',`js/scripts.js?ver=${d}`)
     </script>
-    <script type="text/javascript"  id="roses" src="js/scripts.js?ver=ddcsd44545csdc"></script>
+    <script type="text/javascript"  id="roses" src="js/scripts.js?ver=5"></script>
 </html>
