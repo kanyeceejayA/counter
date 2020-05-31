@@ -72,20 +72,17 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <style>
-                        
-                    </style>
                     <form>
                         <div class="form-group row">
                           <label for="maxVal" class="col-xs-3 col-sm-2 col-form-label">Max: </label>
                           <div class="col-sm-3">
-                            <input type="number" class="form-control" id="maxVal" placeholder="" min="0" max="10">
+                            <input type="number" pattern="[0-9]*" class="form-control" id="maxVal" placeholder="" min="0" max="10">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="warnVal" class="col-xs-3 col-sm-2 col-form-label">Warning: </label>
                           <div class="col-sm-3">
-                            <input type="number" class="form-control" id="warnVal" placeholder="" min="0" max="10">
+                            <input type="number" pattern="[0-9]*" class="form-control" id="warnVal" placeholder="" min="0" max="10">
                           </div>
                         </div>
                         <div class="form-group row">
