@@ -4,7 +4,8 @@ var max = {};
 var warn = {};
 let countView = document.getElementById('countView');
 var count ={};
-var warned ={};
+var darkCookie ={};
+var bgCookie ={};
 
 
 window.onload = function(){
@@ -34,18 +35,24 @@ window.onload = function(){
 
     count.a = parseInt(count.a);
 
-    // function alignModal(){
-    //     var modalDialog = $(this).find(".modal-dialog");
-    //     /* Applying the top margin on modal dialog to align it vertically center */
-    //     modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
-    // }
-    // // Align modal when it is displayed
-    // $(".modal").on("shown.bs.modal", alignModal);
-    
-    // // Align modal when user resize the window
-    // $(window).on("resize", function(){
-    //     $(".modal:visible").each(alignModal);
-    // });
+    darkCookie = getCookie('dark');
+    bgCookie = this.getCookie('bg');
+
+    if(darkCookie == null){
+        document.cookie = "dark:on;";
+    }else if(darkCookie == 'off'){
+        $('.masthead').toggleClass('darker');
+        $('nav').toggleClass('bg-dark');
+        $('nav').toggleClass('bg-light');
+        $('nav').toggleClass('navbar-dark');
+        $('nav').toggleClass('navbar-light');
+    }
+
+    if(bgCookie == null){
+        document.cookie = "bg=on";
+    }else if(bgCookie == 'off'){
+        $('.masthead').toggleClass('bg');
+    }
 }
 
 //Change Variables
@@ -163,7 +170,13 @@ function myalert(type,message){
 }
 
 function togglebg(){
-    $('.masthead').toggleClass('bg');
+    if(bgCookie == 'on'){
+        $('.masthead').toggleClass('bg');
+        document.cookie = "bg=off";
+    }else if(bgCookie == 'off'){
+        $('.masthead').toggleClass('bg');
+        document.cookie = "bg=on";
+    }
 }
 
 function togglecolor(){
@@ -172,6 +185,14 @@ function togglecolor(){
     $('nav').toggleClass('bg-light');
     $('nav').toggleClass('navbar-dark');
     $('nav').toggleClass('navbar-light');
+
+    if(darkCookie == "on"){
+        darkCookie = 'off';
+        document.cookie = "dark=off;";
+    }else if(darkCookie=="off") {
+        darkCookie = "on";
+        document.cookie = "dark=on;";
+    }
 }
 
 function getCookie(name) {
