@@ -167,7 +167,7 @@ count.registerListener(function(val) {
 
 function myalert(type,message){
     document.getElementById('alertbox').innerHTML = `<div class='alert alert-${type} alert-dismissible slideup show ml-auto mr-auto' role='alert'><strong>${type}:</strong> ${message}.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>`;
-    // setTimeout(() => {   $('.alert').alert("close"); }, 2000);
+    setTimeout(() => {   $('.alert').alert("close"); }, 2000);
 }
 
 function togglebg(){
