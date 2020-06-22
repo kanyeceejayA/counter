@@ -1,0 +1,24 @@
+{
+  "name": "counter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanyeceejayA/counter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanyeceejayA/counter/issues"
+  },
+  "homepage": "https://github.com/kanyeceejayA/counter#readme",
+  "dependencies": {
+    "eslint": "^7.3.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
+}

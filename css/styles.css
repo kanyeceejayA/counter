@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 body{
     font-family: 'Roboto Condensed', sans-serif;
-    text-transform: capitalize;
-    /* letter-spacing: .045em; */
-    /* font-size: 18px; */
+    text-transform: initial;
+    /* letter-spacing: .045em;
+    font-size: 18px; */
 
 }
 .masthead {
