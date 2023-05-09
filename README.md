@@ -4,3 +4,5 @@ A Low budget Foot Traffic Counter made for Spot Chek. It is used to easily keep 
 
 Built for use on iPads reporting to a central server, but can be used on any web-enabled device.
 
+![counter image](https://kanyeceejaya.github.io/images/counter.png "Screenshot of Foot Traffic Counter")
+
